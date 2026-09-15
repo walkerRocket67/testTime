@@ -14,8 +14,8 @@ public class Quiz {
     public Quiz(String title, String joinCode, String qrCode, String link) {
         this.title = title;
         this.joinCode = joinCode;
-//        this.qrCode = qrCode;
-//        this.link = link;
+       this.qrCode = qrCode;
+       this.link = link;
         this.questions = new ArrayList<>();
     }
 
