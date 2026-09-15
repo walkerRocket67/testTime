@@ -1,0 +1,62 @@
+classDiagram
+    class Quiz {
+        -String id
+        -String title
+        -String description
+        -String joinCode
+        -String qrCode
+        -String link
+        -List~Question~ questions
+        +Quiz(String, String, String, String)
+        +addQuestion(Question) void
+        +getQuestions() List~Question~
+    }
+
+    class Question {
+        -Integer value
+        -String name
+        -ArrayList~Question~ questions
+        -String answer
+        +Question(Integer, String, ArrayList, String)
+        +getValue() Integer
+        +setValue(Integer) void
+        +getName() String
+        +setName(String) void
+        +getQuestions() ArrayList~Question~
+        +setQuestions(ArrayList) void
+        +getAnswer() String
+        +setAnswer(String) void
+    }
+
+    class Player {
+        -String playerName
+        -int playerPoints
+        -int playerRank
+        +Player(String)
+        +getPlayerName() String
+        +getPlayerPoints() int
+        +getPlayerRank() int
+        +setPlayerName(String) void
+        +setPlayerRank(int) void
+        +addPoints(int) void
+        +resetPoints() void
+        +toString() String
+    }
+
+    class Host {
+        -List~Question~ currentTest
+        -int currentQuestionIndex
+        +Host()
+        +selectTest(List~Question~) void
+        +startTest() void
+        +nextQuestion() Question
+    }
+
+    class Main {
+        +main(String[]) void
+    }
+
+    Quiz "1" --> "*" Question: contains
+    Host "1" --> "*" Question: manages
+    Question "1" --> "*" Question: nested questions
+
